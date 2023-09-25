@@ -1,0 +1,135 @@
+spring:
+  kafka:
+    bootstrap-servers: 192.168.121.36:9092    
+    topic:
+      new-post: topic_new_post_for_
+      delete-post: topic_delete_post_for_
+      email-queue: topic_email_queue_
+      notification-queue: topic_notification_queue_
+      sms-queue: topic_sms_queue_
+      new-reaction: topic_new_reaction_for_
+      update-reaction: topic_update_reaction_for_
+      delete-reaction: topic_delete_reaction_for_
+      new-comment: topic_new_comment_for_
+      delete-comment: topic_delete_comment_for_
+      delete-user-service: topic_delete_user_service
+      active-user-service: topic_active_user_service
+      deactive-user-service: topic_deactive_user_service
+      new-rating: topic_new_rating_for_
+      update-rating: topic_update_rating_for_
+      delete-rating: topic_delete_rating_for_
+      new-like: topic_new_like_for_
+      delete-like: topic_delete_like_for_
+      new-share: topic_new_share_for_
+      delete-share: topic_delete_share_for_
+      update-user-profile: topic_update_user_profile_for_ 
+      count-product: topic_count_product
+      count-object: topic_count_for_
+      catalog-product-sys: topic_catalog_product_sys
+      catalog-update-quantity: topic_catalog_update_quantity
+      catalog-update: topic_catalog_update
+      catalog-shop-update: topic_catalog_shop_update
+      update-shop-address: topic_update_shop_address
+      update-rating-product: topic_update_rating_product
+      shopping-trends: topic_shopping_trend
+      scheduling-rating: topic_scheduling_rating_for_
+      data-change-for-neo4j: topic_data_for_neo4j
+      new-follower: topic_new_follower_for_
+      delete-follower: topic_delete_follower_for_
+      food-type-update-quantity: topic_food_type_update_quantity
+      count-review-restaurant: topic_count_review_restaurant
+      change-name-catalog: topic_change_name_catalog_for_
+      delete-product: topic_delete_product_for_
+      delete-food: topic_delete_food_for_
+      update-food-type: topic_update_food_type_for_
+      create-webp-topic: topic_storage_create_webp_server
+      create-webm-topic: topic_storage_create_webm_server
+      new-voucher: topic_new_voucher_for_
+      delete-voucher: topic_delete_voucher_for_
+      update-restaurant: topic_update_restaurant_for_
+  ws:
+    destination:
+      ecommerce-food: public_cart_food
+      ecommerce-product: public_cart_product
+  data:
+    redis:
+      database: 0
+      port: 6379
+      timeout: 30000
+      host: 192.168.121.32
+      username: default
+      password: 12345678x@X
+  cache:
+    type: redis
+    redis:
+      time-to-live: '45000'
+      cache-null-values: 'true'
+  jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                id:
+                    new_generator_mappings: false
+  cassandra:
+    schema-action: CREATE_IF_NOT_EXISTS
+    username: cassandra
+    password: 12345678x@X
+    local-datacenter: dc1
+    request:
+      timeout: 10s
+    port: '9042'
+    connection:
+      init-query-timeout: 10s
+      connect-timeout: 10s
+    contact-points: 192.168.121.29, 192.168.121.42
+  main:
+    allow-bean-definition-overriding: 'true'
+  session:
+    store-type: redis
+    redis:
+      namespace: dev
+    properties:
+      hibernate:
+        id:
+          new_generator_mappings: 'true'
+  neo4j:
+    uri: neo4j://192.168.121.37:7687
+    authentication:
+      username: neo4j
+      password: 12345678x@X_neo4j
+
+server:
+  http2:
+    enabled: true
+app:
+  greeting: Hello from config file on github updated
+  gateway:
+    domain-name: https://api-dev-soctrip.tma-swerp.com
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: localhost:${server.port}
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:        
+  file:
+    name: application.log
+  level:
+    root: INFO
+    org.springframework: INFO
+
+es:
+  hostname: 192.168.121.101
+  port: 9200
+  username: elastic
+  password: 12345678x@X
